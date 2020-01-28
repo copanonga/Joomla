@@ -3,6 +3,7 @@
 ## Índice de contenidos
 
 - [Crear carpeta durante la instalación de un componente](#crear-carpeta-durante-la-instalación-de-un-componente)
+- [Fecha](#fecha)
 
 ## Crear carpeta durante la instalación de un componente
 
@@ -21,3 +22,11 @@ JFolder::create($path, $mode);
 ```
 
 Creamos una carpeta en images para contenido multimedia.
+
+## Fecha
+
+```
+$config  = JFactory::getConfig();
+$offset  = $config->get('offset');    
+$fecha   = JFactory::getDate('now', $offset);
+```
