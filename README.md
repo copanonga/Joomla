@@ -6,6 +6,7 @@
 - [Fecha](#fecha)
 - [Insertar en base de datos](#insertar-en-base-de-datos)
 - [Enviar correo](#enviar-correo)
+- [Select](#select)
 
 ## Crear carpeta durante la instalación de un componente
 
@@ -79,4 +80,20 @@ if ($isSend==0) {
 } else {
     return "Enviado";
 }
+```
+
+## Select
+
+```
+$db = JFactory::getDbo(); 
+        
+$query	= $db->getQuery(true);
+$query->select(array('u.data'));
+$query->from(('#__datos').' AS u');
+$query->where('(u.numero = '.$datoABuscar.')');
+$query->where('(u.estado = 1)');
+$query->order('u.ordering ASC');
+
+$db->setQuery($query);
+$result = $db->loadObjectlist();
 ```
