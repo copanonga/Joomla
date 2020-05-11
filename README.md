@@ -90,6 +90,7 @@ $db = JFactory::getDbo();
 $query	= $db->getQuery(true);
 $query->select(array('u.data'));
 $query->from(('#__datos').' AS u');
+$query->join('LEFT', $db->quoteName('#__datos001', 'a') . ' ON (' . $db->quoteName('u.id') . ' = ' . $db->quoteName('a.id') . ')');
 $query->where('(u.numero = '.$datoABuscar.')');
 $query->where('(u.estado = 1)');
 $query->order('u.ordering ASC');
