@@ -33,6 +33,7 @@ Creamos una carpeta en images para contenido multimedia.
 $config  = JFactory::getConfig();
 $offset  = $config->get('offset');    
 $fecha   = JFactory::getDate('now', $offset);
+$fecha_actual = $fecha->toSql($local = 'true');
 ```
 
 ## Insertar en base de datos
