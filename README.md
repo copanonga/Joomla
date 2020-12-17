@@ -7,6 +7,7 @@
 - [Insertar en base de datos](#insertar-en-base-de-datos)
 - [Enviar correo](#enviar-correo)
 - [Select](#select)
+- [Mostrar popover en modal](#mostrar-popover-en-modal)
 
 ## Crear carpeta durante la instalación de un componente
 
@@ -97,4 +98,29 @@ $query->order('u.ordering ASC');
 
 $db->setQuery($query);
 $result = $db->loadObjectlist();
+```
+
+## Mostrar popover en modal
+
+```
+$document  = JFactory::getDocument();
+$popover      = '.popover {z-index: 99999;}';
+$document->addStyleDeclaration($popover);
+
+<p      
+        data-toggle="popover"
+        data-placement="top"
+        data-trigger="hover"
+        data-original-title="Título"
+        data-content="Contenido">
+        Día completo
+</p>
+
+<script>
+    
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+    });
+    
+</script>    
 ```
