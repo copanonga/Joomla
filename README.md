@@ -7,7 +7,9 @@
 - [Insertar en base de datos](#insertar-en-base-de-datos)
 - [Enviar correo](#enviar-correo)
 - [Select](#select)
-- [Mostrar popover en modal](#mostrar-popover-en-modal)
+- [Mostrar popover en modal](#mostrar-popover-xen-modal)
+- [Comprobar perfil root](#comprobar-perfil-root)
+
 
 ## Crear carpeta durante la instalación de un componente
 
@@ -124,4 +126,11 @@ $document->addStyleDeclaration($popover);
     });
     
 </script>    
+```
+
+## Comprobar perfil root
+
+```
+$user = JFactory::getUser();
+$isRoot = $user->get('isRoot');
 ```
