@@ -5,6 +5,7 @@
 - [Crear carpeta durante la instalación de un componente](#crear-carpeta-durante-la-instalación-de-un-componente)
 - [Fecha](#fecha)
 - [Insertar en base de datos](#insertar-en-base-de-datos)
+- [Actualizar en base de datos](#actualizar-en-base-de-datos)
 - [Enviar correo](#enviar-correo)
 - [Select](#select)
 - [Mostrar popover en modal](#mostrar-popover-xen-modal)
@@ -49,6 +50,28 @@ $insertarDato->dato002   = 'Dato 002';
 $result = $db->insertObject('#__tabla', $insertarDato);
 
 $nuevoId = $db->insertid();
+```
+
+## Actualizar en base de datos
+
+```
+$db = JFactory::getDbo();
+
+$query = $db->getQuery(true);
+
+$fields = array(
+    $db->quoteName('block') . ' =  ' . $bloquearUsuario,
+);
+
+$conditions = array(
+    $db->quoteName('id') . ' = ' . $idUser
+);
+
+$query->update($db->quoteName('#__users'))->set($fields)->where($conditions);
+
+$db->setQuery($query);
+
+$result = $db->execute();
 ```
 
 ## Enviar correo
