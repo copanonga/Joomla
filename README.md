@@ -6,6 +6,7 @@
 - [Fecha](#fecha)
 - [Insertar en base de datos](#insertar-en-base-de-datos)
 - [Actualizar en base de datos](#actualizar-en-base-de-datos)
+- [Borrar en base de datos](#borrar-en-base-de-datos)
 - [Enviar correo](#enviar-correo)
 - [Select](#select)
 - [Mostrar popover en modal](#mostrar-popover-xen-modal)
@@ -72,6 +73,18 @@ $query->update($db->quoteName('#__users'))->set($fields)->where($conditions);
 $db->setQuery($query);
 
 $result = $db->execute();
+```
+
+## Borrar en base de datos
+
+```
+$db = JFactory::getDbo();
+
+$query = $db->getQuery(true);
+$query->delete($db->quoteName('#__users'));
+$query->where($db->quoteName('id') . " = " . $db->quote($idUser));
+
+$db->setQuery($query)->execute();
 ```
 
 ## Enviar correo
