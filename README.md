@@ -54,24 +54,22 @@ $nuevoId = $db->insertid();
 ## Enviar correo
 
 ```
-$subject = "Asunto";
-        
-$body .= 'Texto';
-
-$from = array("info@correo.es", "Info");
-$to = "hola@correo.es";
-
 $mailer = JFactory::getMailer();
+$from = array("info@correo.es", "Info");
 $mailer->setSender($from);
 
+$subject = "Asunto";
+$body .= 'Texto';
+
+$correosOcultosAEnviar = array();
+array_push($correosOcultosAEnviar, "hola@demo.es");
+
+//addBCC: envío de correos con copia oculta
+$mailer->addBCC($correosOcultosAEnviar);
+
+//addRecipient: correo sin copia oculta
+$to = "hola@correo.es";
 $mailer->addRecipient($to);
-
-$correosAEnviar = array();
-array_push($correosAEnviar, "hola@demo.es");
-
-foreach ($correosAEnviar as $correo) {
-    $mailer->addBCC($correo);
-}
 
 $mailer->setSubject($subject);
 $mailer->setBody($body);
@@ -80,7 +78,7 @@ $mailer->isHTML();
 $isSend = $mailer->send(); 
 
 if ($isSend==0) {
-    return 'Error sending email';
+    return 'Error al enviar el correo';
 } else {
     return "Enviado";
 }
