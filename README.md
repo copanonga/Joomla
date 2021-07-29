@@ -103,6 +103,9 @@ array_push($correosOcultosAEnviar, "hola@demo.es");
 //addBCC: envío de correos con copia oculta
 $mailer->addBCC($correosOcultosAEnviar);
 
+$user   = JFactory::getUser();
+$mailer->addReplyTo($user->email);
+
 //addRecipient: correo sin copia oculta
 $to = "hola@correo.es";
 $mailer->addRecipient($to);
